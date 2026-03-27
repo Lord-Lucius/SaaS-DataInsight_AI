@@ -1,8 +1,5 @@
 from fastapi import FastAPI
 
-
-list_files: list = []
-
 app = FastAPI()
 
 @app.get('/')
