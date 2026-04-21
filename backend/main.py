@@ -1,11 +1,17 @@
 from fastapi import FastAPI
+from backend.core.config import settings
 
-app = FastAPI()
+app = FastAPI(
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+)
 
-@app.get('/')
+
+@app.get("/")
 def root():
-	return {"hello": "world"}
+    return {"app": settings.APP_NAME, "version": settings.APP_VERSION}
 
-@app.get('/health/')
+
+@app.get("/health")
 def health_check():
-	return {"status": "healthy"}
+    return {"status": "healthy"}
