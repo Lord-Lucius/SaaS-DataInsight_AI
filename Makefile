@@ -1,20 +1,23 @@
-NAME = Transcendence
+NAME = SaaS-DataInsight-AI
+
+.PHONY: all build up down logs stop restart clean re help
 
 all: build up
 
 re: down clean build up
 
 help:
-	@echo "=== Transcendence Project ==="
+	@echo "=== $(NAME) ==="
 	@echo ""
 	@echo "Available commands:"
-	@echo "  make build              - Build Docker images"
-	@echo "  make up                 - Start containers"
-	@echo "  make down               - Stop containers"
-	@echo "  make logs               - Display logs"
-	@echo "  make stop               - Stop containers"
-	@echo "  make restart            - Restart containers"
-	@echo "  make clean              - Remove containers and volumes"
+	@echo "  make build     - Build Docker images"
+	@echo "  make up        - Start containers"
+	@echo "  make down      - Stop containers and remove volumes"
+	@echo "  make logs      - Follow container logs"
+	@echo "  make stop      - Stop containers (keep volumes)"
+	@echo "  make restart   - Restart containers"
+	@echo "  make clean     - Remove containers and volumes"
+	@echo "  make re        - Full rebuild from scratch"
 	@echo ""
 
 build:
@@ -23,7 +26,8 @@ build:
 up:
 	docker compose up -d
 	@echo "✅ Services started!"
-	@echo "== FastAPI started =="
+	@echo "   API : http://localhost:8000"
+	@echo "   Docs: http://localhost:8000/docs"
 
 down:
 	docker compose down -v
@@ -39,5 +43,5 @@ stop:
 restart: down up
 
 clean:
-	docker compose down -v
-	@echo "✅ Containers and volumes removed"
+	docker compose down -v --rmi local
+	@echo "✅ Containers, volumes and local images removed"

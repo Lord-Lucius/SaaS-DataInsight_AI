@@ -1,8 +1,0 @@
-[tools]
-python = "3.14"
-
-[env]
-_.python.venv = "env"
-
-[tasks.install]
-run = "uv pip install -r requirements.txt"
