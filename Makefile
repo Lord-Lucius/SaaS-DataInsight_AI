@@ -2,9 +2,9 @@ NAME = SaaS-DataInsight-AI
 
 .PHONY: all build up down logs stop restart clean re help
 
-all: build up
+all: build up logs
 
-re: down clean build up
+re: down clean build up logs
 
 help:
 	@echo "=== $(NAME) ==="
@@ -45,3 +45,5 @@ restart: down up
 clean:
 	docker compose down -v --rmi local
 	@echo "✅ Containers, volumes and local images removed"
+
+fclean: down clean
