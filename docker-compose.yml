@@ -1,5 +1,19 @@
 services:
 
+  # ___ Front ___________________________________________________________________
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - fastapi
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+
   # ─── PostgreSQL ──────────────────────────────────────────────────────────────
   db:
     image: postgres:16-alpine

@@ -28,6 +28,7 @@ up:
 	@echo "✅ Services started!"
 	@echo "   API : http://localhost:8000"
 	@echo "   Docs: http://localhost:8000/docs"
+	@echo "   Frontend : http://localhost:5173"
 
 down:
 	docker compose down -v
