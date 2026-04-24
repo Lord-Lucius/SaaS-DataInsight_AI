@@ -10,4 +10,5 @@ async def create_upload_file(file: UploadFile):
 
     if not content:
         raise HTTPException(status_code=400, detail="No content in the file")
+    
     return response_model(status="succes", file_id=str(uuid.uuid4()))
