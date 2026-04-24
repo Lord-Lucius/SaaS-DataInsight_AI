@@ -18,9 +18,16 @@ export default function FileUpload({ onSuccess }) {
 
   function handleFileChosen(file) {
     if (!file) return;
-    upload(file).then(() => {
-      // fileData is set inside the hook; expose it to the parent once ready
-    });
+     const isCsv =
+      file.name.toLowerCase().endsWith(".csv") ||
+      file.type === "text/csv" ||
+      file.type === "application/vnd.ms-excel";
+
+    if (!isCsv) {
+       console.error("Solo CSV");
+      return;
+    }
+  upload(file);
   }
 
   function handleInputChange(e) {
