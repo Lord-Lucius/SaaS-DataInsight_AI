@@ -55,15 +55,15 @@ body {
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  box-sizing: border-box;
   margin: 0 auto;
   text-align: center;
   border-inline: 1px solid var(--border);
   min-height: 100svh;
-  display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
 h1,
@@ -108,4 +108,53 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+.app-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  border-right: 1px solid var(--border);
+  padding: 20px;
+  text-align: left;
+  background: var(--bg);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.upload-center {
+  width: 100%;
+  max-width: 520px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.dataset-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.dataset-list li {
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.dataset-list li:hover {
+  background: var(--accent-bg);
 }
